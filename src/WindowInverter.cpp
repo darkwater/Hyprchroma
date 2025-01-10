@@ -3,11 +3,12 @@
 
 #include "DecorationsWrapper.h"
 
-void WindowInverter::SetBackground(GLfloat r, GLfloat g, GLfloat b)
+void WindowInverter::SetBackground(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 {
     bkgR = r;
     bkgG = g;
     bkgB = b;
+    targetOpacity = a;
 }
 
 void WindowInverter::OnRenderWindowPre()
@@ -23,10 +24,13 @@ void WindowInverter::OnRenderWindowPre()
     {
         glUseProgram(m_Shaders.RGBA.program);
         glUniform3f(m_Shaders.BKGA, bkgR, bkgG, bkgB);
+        glUniform1f(m_Shaders.TargetOpacityA, targetOpacity);
         glUseProgram(m_Shaders.RGBX.program);
         glUniform3f(m_Shaders.BKGX, bkgR, bkgG, bkgB);
+        glUniform1f(m_Shaders.TargetOpacityX, targetOpacity);
         glUseProgram(m_Shaders.EXT.program);
         glUniform3f(m_Shaders.BKGE, bkgR, bkgG, bkgB);
+        glUniform1f(m_Shaders.TargetOpacityE, targetOpacity);
         std::swap(m_Shaders.EXT, g_pHyprOpenGL->m_RenderData.pCurrentMonData->m_shEXT);
         std::swap(m_Shaders.RGBA, g_pHyprOpenGL->m_RenderData.pCurrentMonData->m_shRGBA);
         std::swap(m_Shaders.RGBX, g_pHyprOpenGL->m_RenderData.pCurrentMonData->m_shRGBX);

@@ -12,7 +12,7 @@ public:
     void Init(HANDLE pluginHandle);
     void Unload();
 
-    void SetBackground(GLfloat r, GLfloat g, GLfloat b);
+    void SetBackground(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
 
     void InvertIfMatches(PHLWINDOW window);
     void ToggleInvert(PHLWINDOW window);
@@ -44,4 +44,5 @@ private:
     GLfloat bkgR = 0.0f;
     GLfloat bkgG = 0.0f;
     GLfloat bkgB = 0.0f;
+    GLfloat targetOpacity = 0.8f;
 };

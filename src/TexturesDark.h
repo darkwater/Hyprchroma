@@ -9,6 +9,7 @@
 inline static const std::string DARK_MODE_FUNC = R"glsl(
 uniform bool doInvert;
 uniform vec3 bkg;
+uniform float target_opacity;
 
 void invert(inout vec4 color) {
     if (doInvert) {
@@ -19,7 +20,6 @@ void invert(inout vec4 color) {
         float similarity = 0.1; // How many similar colors should be affected.
 
         float amount = 1.4; // How much similar colors should be changed.
-        float target_opacity = 0.83;
         // Change any of the above values to get the result you want
 
         // Set values to a 0 - 1 range

@@ -8,7 +8,7 @@ Hyprchroma is a Hyprland plugin that applies a chromakey effect for global windo
 ```conf
 # hyprland.conf
 windowrulev2 = plugin:chromakey,fullscreen:0
-chromakey_background = 7,8,17
+chromakey_background = 7,8,17,0.83 # r,g,b to chroma key out (0-255), and alpha to replace it with (0-1)
 ```
 
 Also adds 2 Dispatches `togglewindowchromakey WINDOW` and `togglechromakey` (for the active window)

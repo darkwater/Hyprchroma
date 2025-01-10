@@ -49,7 +49,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle)
     HyprlandAPI::addConfigKeyword(
         handle, "chromakey_background",
         [](const char* cmd, const char* val) -> Hyprlang::CParseResult {
-            // Parse val as "r,g,b" into 3 GLfloats
+            // Parse val as "r,g,b,a" into 4 GLfloats
             std::vector<std::string> result;
             std::stringstream ss (val);
             std::string component;
@@ -60,8 +60,10 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle)
             GLfloat g = std::stof(component);
             getline(ss, component, ',');
             GLfloat b = std::stof(component);
+            getline(ss, component, ',');
+            GLfloat a = std::stof(component);
 
-            g_WindowInverter.SetBackground(r, g, b);
+            g_WindowInverter.SetBackground(r, g, b, a);
 
             return Hyprlang::CParseResult(); // return a default CParseResult
         },

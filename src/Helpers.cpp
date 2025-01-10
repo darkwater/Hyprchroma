@@ -27,7 +27,8 @@ void ShaderHolder::Init()
     RGBA.applyTint            = glGetUniformLocation(prog, "applyTint");
     RGBA.tint                 = glGetUniformLocation(prog, "tint");
     RGBA_Invert               = glGetUniformLocation(prog, "doInvert"); 
-    BKGA = glGetUniformLocation(prog, "bkg");
+    BKGA                      = glGetUniformLocation(prog, "bkg");
+    TargetOpacityA            = glGetUniformLocation(prog, "target_opacity");
 
     prog                      = CreateProgram(TEXVERTSRC, TEXFRAGSRCRGBX_DARK);
     RGBX.program              = prog;
@@ -45,7 +46,8 @@ void ShaderHolder::Init()
     RGBX.applyTint            = glGetUniformLocation(prog, "applyTint");
     RGBX.tint                 = glGetUniformLocation(prog, "tint");
     RGBX_Invert               = glGetUniformLocation(prog, "doInvert"); 
-    BKGX = glGetUniformLocation(prog, "bkg");
+    BKGX                      = glGetUniformLocation(prog, "bkg");
+    TargetOpacityX            = glGetUniformLocation(prog, "target_opacity");
 
     prog                     = CreateProgram(TEXVERTSRC, TEXFRAGSRCEXT_DARK);
     EXT.program              = prog;
@@ -63,7 +65,8 @@ void ShaderHolder::Init()
     EXT.applyTint            = glGetUniformLocation(prog, "applyTint");
     EXT.tint                 = glGetUniformLocation(prog, "tint");
     EXT_Invert               = glGetUniformLocation(prog, "doInvert"); 
-    BKGE = glGetUniformLocation(prog, "bkg");
+    BKGE                     = glGetUniformLocation(prog, "bkg");
+    TargetOpacityE           = glGetUniformLocation(prog, "target_opacity");
 
     g_pHyprRenderer->unsetEGL();
 }

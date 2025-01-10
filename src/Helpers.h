@@ -35,6 +35,10 @@ struct ShaderHolder
     GLint BKGX;
     GLint BKGE;
 
+    GLint TargetOpacityA;
+    GLint TargetOpacityX;
+    GLint TargetOpacityE;
+
     void Init();
     void Destroy();
 
